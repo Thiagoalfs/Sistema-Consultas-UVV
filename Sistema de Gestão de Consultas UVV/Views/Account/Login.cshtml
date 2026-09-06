@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Entrar";
+}
+
+<div class="container mt-5" style="max-width: 450px;">
+    <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+            <h3 class="card-title text-center mb-4">Login</h3>
+
+            @if (ViewBag.Erro != null)
+            {
+                <div class="alert alert-danger py-2" role="alert">
+                    @ViewBag.Erro
+                </div>
+            }
+
+            <form asp-action="Login" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="seu@email.com" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="senha" class="form-label">Senha</label>
+                    <input type="password" name="senha" id="senha" class="form-control" placeholder="Sua senha" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100 py-2 mt-2">Entrar</button>
+            </form>
+
+            <div class="text-center mt-3">
+                <small class="text-muted">Não possui conta? <a asp-action="Register">Cadastre-se</a></small>
+            </div>
+        </div>
+    </div>
+</div>
